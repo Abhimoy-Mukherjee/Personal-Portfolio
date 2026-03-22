@@ -6,7 +6,7 @@ Personal portfolio website built to showcase my work, skills, and projects.
 
 ## 🚀 Live
 
-https://your-username.github.io/repo-name
+https://abhimoy-mukherjee.vercel.app/
 
 ---
 
