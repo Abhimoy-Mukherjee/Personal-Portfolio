@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhimoy Mukherjee</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #0b0900; color: #f0e8d0; font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.75; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(11,9,0,0.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(212,175,55,0.1); }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; background: linear-gradient(90deg,#d4af37,#f5d26a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+nav ul { display: flex; gap: 2rem; list-style: none; }
+nav ul a { font-size: 0.82rem; color: #9a8e68; text-decoration: none; transition: color 0.2s; position: relative; }
+nav ul a:hover { color: #f0e8d0; }
+nav ul a.active { color: #d4af37; }
+nav ul a.active::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1.5px; background: linear-gradient(90deg,#d4af37,#f5d26a); border-radius: 2px; }
+
+/* LAYOUT */
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 3rem; }
+section { padding: 5rem 0; border-top: 1px solid rgba(212,175,55,0.08); }
+.gold { background: linear-gradient(120deg,#b8860b,#d4af37,#f5d26a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 600; color: #f0e8d0; margin-bottom: 2rem; }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 5rem; border: none; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: #9a8e68; margin-bottom: 1.4rem; min-height: 1.2em; display: flex; align-items: center; }
+#typed { color: #d4af37; }
+.cursor { display: inline-block; width: 2px; height: 0.85em; background: #d4af37; border-radius: 1px; margin-left: 2px; animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.8rem,9vw,7.5rem); font-weight: 600; line-height: 0.95; letter-spacing: -0.01em; margin-bottom: 1.8rem; }
+.sub { font-size: 0.95rem; color: #9a8e68; max-width: 400px; line-height: 1.85; margin-bottom: 2.4rem; }
+.btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { font-size: 0.82rem; font-weight: 500; padding: 0.75rem 1.7rem; border-radius: 100px; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; display: inline-block; font-family: 'DM Sans', sans-serif; }
+.btn-gold { background: linear-gradient(135deg,#b8860b,#d4af37); color: #0b0900; }
+.btn-gold:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #9a8e68; border: 1px solid rgba(212,175,55,0.25); }
+.btn-outline:hover { border-color: rgba(212,175,55,0.5); color: #f0e8d0; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; }
+.about-grid p { font-size: 0.92rem; color: #9a8e68; line-height: 1.9; margin-bottom: 0.8rem; }
+.about-grid strong { color: #f0e8d0; font-weight: 500; }
+.pills { display: flex; flex-direction: column; gap: 0.6rem; }
+.pill { display: flex; align-items: center; gap: 0.8rem; padding: 0.75rem 1.1rem; background: #111008; border: 1px solid rgba(212,175,55,0.08); border-radius: 12px; font-size: 0.82rem; color: #9a8e68; transition: all 0.2s; }
+.pill:hover { border-color: rgba(212,175,55,0.3); color: #f0e8d0; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg,#d4af37,#f5d26a); flex-shrink: 0; }
+
+/* EDUCATION */
+.edu { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.25rem 1.5rem; background: #111008; border: 1px solid rgba(212,175,55,0.08); border-radius: 14px; transition: border-color 0.2s; }
+.edu:hover { border-color: rgba(212,175,55,0.3); }
+.edu-deg { font-size: 0.92rem; font-weight: 500; color: #f0e8d0; margin-bottom: 0.2rem; }
+.edu-school { font-size: 0.78rem; color: #9a8e68; }
+.edu-right { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+.edu-yr { font-size: 0.77rem; color: #5a5030; }
+.badge { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.7rem; border-radius: 100px; background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.22); color: #f5d26a; white-space: nowrap; }
+
+/* SKILLS */
+.skills { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 0.65rem; }
+.sk { display: flex; align-items: center; gap: 0.7rem; padding: 0.8rem 1rem; background: #111008; border: 1px solid rgba(212,175,55,0.08); border-radius: 10px; font-size: 0.84rem; color: #f0e8d0; transition: all 0.2s; }
+.sk:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-2px); }
+.bar { width: 3px; height: 16px; border-radius: 2px; background: linear-gradient(180deg,#d4af37,#f5d26a); flex-shrink: 0; }
+.bar.dim { opacity: 0.4; }
+.ltag { margin-left: auto; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: #d4af37; opacity: 0.6; }
+
+/* PROJECTS */
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.pcard { padding: 1.8rem; background: #111008; border: 1px solid rgba(212,175,55,0.08); border-radius: 16px; transition: all 0.25s; }
+.pcard:hover { border-color: rgba(212,175,55,0.3); transform: translateY(-3px); }
+.pglyph { font-size: 1.4rem; margin-bottom: 0.9rem; display: block; }
+.pname { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: #f0e8d0; margin-bottom: 0.45rem; }
+.pdesc { font-size: 0.8rem; color: #9a8e68; line-height: 1.85; margin-bottom: 1.2rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.22rem 0.65rem; border-radius: 100px; background: rgba(212,175,55,0.07); border: 1px solid rgba(212,175,55,0.18); color: #d4af37; }
+.proj-link { font-size: 0.78rem; font-weight: 500; color: #d4af37; text-decoration: none; transition: opacity 0.2s; }
+.proj-link:hover { opacity: 0.7; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.cblurb { font-size: 0.9rem; color: #9a8e68; line-height: 1.9; margin-bottom: 1.4rem; }
+.clinks { display: flex; flex-direction: column; gap: 0.6rem; }
+.clink { display: flex; align-items: center; gap: 0.85rem; padding: 0.8rem 1.1rem; background: #111008; border: 1px solid rgba(212,175,55,0.08); border-radius: 12px; text-decoration: none; font-size: 0.82rem; color: #9a8e68; transition: all 0.2s; }
+.clink:hover { border-color: rgba(212,175,55,0.3); color: #f0e8d0; }
+.clink svg { width: 14px; height: 14px; fill: currentColor; opacity: 0.6; flex-shrink: 0; }
+.cform { display: flex; flex-direction: column; gap: 0.8rem; }
+.fi { width: 100%; background: #111008; border: 1px solid rgba(212,175,55,0.08); border-radius: 10px; padding: 0.8rem 1rem; color: #f0e8d0; font-family: 'DM Sans', sans-serif; font-size: 0.84rem; font-weight: 300; outline: none; transition: border-color 0.2s; resize: none; }
+.fi::placeholder { color: #5a5030; }
+.fi:focus { border-color: rgba(212,175,55,0.35); }
+#fstatus { font-size: 0.8rem; min-height: 1.2em; margin-top: 0.2rem; }
+
+/* FOOTER */
+footer { border-top: 1px solid rgba(212,175,55,0.08); padding: 1.8rem 3rem; display: flex; justify-content: space-between; align-items: center; max-width: 960px; margin: 0 auto; }
+footer p { font-size: 0.72rem; color: #5a5030; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0b0900; }
+::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.2); border-radius: 4px; }
+
+@media (max-width: 720px) {
+  nav { padding: 1rem 1.5rem; }
+  nav ul { gap: 1rem; }
+  .wrap { padding: 0 1.5rem; }
+  h1 { font-size: 3rem; }
+  .about-grid, .proj-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .edu { flex-direction: column; align-items: flex-start; }
+  footer { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Abhimoy M.</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <section id="hero">
+    <p class="eyebrow"><span id="typed"></span><span class="cursor"></span></p>
+    <h1>Abhimoy<br><span class="gold">Mukherjee</span></h1>
+    <p class="sub">2nd-year Information Science student at DSCE, Bangalore. I build CLI tools, automate with shell scripts, and am diving into DevOps.</p>
+    <div class="btns">
+      <a href="#projects" class="btn btn-gold">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>A bit about <span class="gold">me</span></h2>
+    <div class="about-grid">
+      <div>
+        <p>Hey! I'm <strong>Abhimoy</strong>, a 2nd-year B.E. student from Bangalore who loves building things that live in the terminal. Scripts, automation tools, and systems-level code are my thing.</p>
+        <p>Currently exploring <strong>DevOps</strong> — containers, CI/CD, and infrastructure — to complement my programming roots. When not studying, I'm tinkering with Linux or chasing the next terminal rabbit hole.</p>
+      </div>
+      <div class="pills">
+        <div class="pill"><span class="dot"></span>Bangalore, India</div>
+        <div class="pill"><span class="dot"></span>Open to internships</div>
+        <div class="pill"><span class="dot"></span>Linux daily driver</div>
+        <div class="pill"><span class="dot"></span>CLI over GUI, always</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2><span class="gold">Education</span></h2>
+    <div class="edu">
+      <div>
+        <div class="edu-deg">B.E. — Information Science &amp; Engineering</div>
+        <div class="edu-school">Dayananda Sagar College of Engineering, Bangalore &nbsp;·&nbsp; VTU</div>
+      </div>
+      <div class="edu-right">
+        <span class="edu-yr">2024 – 2028</span>
+        <span class="badge">4th Sem</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Tech <span class="gold">Stack</span></h2>
+    <div class="skills">
+      <div class="sk"><span class="bar"></span>Java</div>
+      <div class="sk"><span class="bar"></span>Python</div>
+      <div class="sk"><span class="bar"></span>C</div>
+      <div class="sk"><span class="bar"></span>C++</div>
+      <div class="sk"><span class="bar"></span>Shell Scripting</div>
+      <div class="sk"><span class="bar"></span>Linux</div>
+      <div class="sk"><span class="bar dim"></span>DevOps <span class="ltag">learning</span></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Things I've <span class="gold">Built</span></h2>
+    <div class="proj-grid">
+      <div class="pcard">
+        <span class="pglyph">&#9881;</span>
+        <div class="pname">System Health Monitor</div>
+        <p class="pdesc">A Bash script that displays real-time CPU, memory, disk usage, and process stats directly in your terminal.</p>
+        <div class="tags">
+          <span class="tag">Bash</span>
+          <span class="tag">Shell</span>
+          <span class="tag">Linux</span>
+        </div>
+        <a href="https://github.com/Abhimoy-Mukherjee/bash-system-health-monitor" target="_blank" class="proj-link">View on GitHub &#8594;</a>
+      </div>
+      <div class="pcard">
+        <span class="pglyph">&#129302;</span>
+        <div class="pname">Virtual Assistant — Jarvis</div>
+        <p class="pdesc">A Python-based voice and text assistant that handles commands, answers questions, and automates tasks — built from scratch.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">NLP</span>
+          <span class="tag">Automation</span>
+        </div>
+        <a href="https://github.com/Abhimoy-Mukherjee/Virtual-Assistant-Jarvis" target="_blank" class="proj-link">View on GitHub &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Let's <span class="gold">Connect</span></h2>
+    <div class="contact-grid">
+      <div>
+        <p class="cblurb">Always up for a good conversation — Linux, DevOps, a project idea, or just connecting with fellow builders.</p>
+        <div class="clinks">
+          <a href="mailto:abhimoymukherjee@gmail.com" class="clink">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            abhimoymukherjee@gmail.com
+          </a>
+          <a href="https://github.com/Abhimoy-Mukherjee" target="_blank" class="clink">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49v-1.71c-2.78.62-3.37-1.37-3.37-1.37-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49C19.13 20.56 22 16.73 22 12.22 22 6.58 17.52 2 12 2z"/></svg>
+            github.com/Abhimoy-Mukherjee
+          </a>
+          <a href="https://www.linkedin.com/in/abhimoy-mukherjee-130474335/" target="_blank" class="clink">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zm2-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+            linkedin.com/in/abhimoy-mukherjee
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="cform">
+          <input class="fi" id="fname" type="text" placeholder="Your name" />
+          <input class="fi" id="femail" type="email" placeholder="Your email" />
+          <textarea class="fi" id="fmsg" rows="5" placeholder="Your message..."></textarea>
+          <button class="btn btn-gold" id="fbtn" style="align-self:flex-start;" onclick="sendForm()">Send message</button>
+          <p id="fstatus"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Built by Abhimoy Mukherjee</p>
+  <p>B.E. ISE &middot; DSCE &middot; Bangalore &middot; 2025</p>
+</footer>
+
+<script>
+// Typing animation
+var roles = ['Student', 'Builder', 'Linux Enthusiast', 'DevOps Learner', 'Shell Scripter'];
+var typedEl = document.getElementById('typed');
+var ri = 0, ci = 0, deleting = false;
+
+function type() {
+  var word = roles[ri];
+  if (!deleting) {
+    ci++;
+    typedEl.textContent = word.slice(0, ci);
+    if (ci === word.length) {
+      deleting = true;
+      setTimeout(type, 1500);
+      return;
+    }
+  } else {
+    ci--;
+    typedEl.textContent = word.slice(0, ci);
+    if (ci === 0) {
+      deleting = false;
+      ri = (ri + 1) % roles.length;
+    }
+  }
+  setTimeout(type, deleting ? 50 : 85);
+}
+setTimeout(type, 800);
+
+// Active nav highlight
+var sections = document.querySelectorAll('section[id]');
+var navLinks = document.querySelectorAll('nav ul a');
+
+var navObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      navLinks.forEach(function(a) { a.classList.remove('active'); });
+      var match = document.querySelector('nav ul a[href="#' + entry.target.id + '"]');
+      if (match) match.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach(function(s) { navObserver.observe(s); });
+
+// Contact form
+function sendForm() {
+  var name = document.getElementById('fname').value.trim();
+  var email = document.getElementById('femail').value.trim();
+  var msg = document.getElementById('fmsg').value.trim();
+  var status = document.getElementById('fstatus');
+  var btn = document.getElementById('fbtn');
+
+  if (!name || !email || !msg) {
+    status.style.color = '#e57373';
+    status.textContent = 'Please fill in all fields.';
+    return;
+  }
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  status.textContent = '';
+
+  fetch('https://formspree.io/f/mwvrjerb', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, message: msg })
+  }).then(function(res) {
+    if (res.ok) {
+      status.style.color = '#d4af37';
+      status.textContent = 'Message sent! I will get back to you soon.';
+      document.getElementById('fname').value = '';
+      document.getElementById('femail').value = '';
+      document.getElementById('fmsg').value = '';
+      btn.textContent = 'Sent!';
+    } else {
+      throw new Error('failed');
+    }
+  }).catch(function() {
+    status.style.color = '#e57373';
+    status.textContent = 'Something went wrong. Email me directly!';
+    btn.textContent = 'Send message';
+    btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
