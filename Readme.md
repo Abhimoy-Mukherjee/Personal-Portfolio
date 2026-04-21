@@ -31,7 +31,7 @@ https://abhimoy-mukherjee.vercel.app/
 ## 📂 Run Locally
 
 ```bash
-git clone https://github.com/your-username/repo-name.git
+git clone https://github.com/your-username/Personal-Portfolio.git
 cd repo-name
 open index.html
 ```
